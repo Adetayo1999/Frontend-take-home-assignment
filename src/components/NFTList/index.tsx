@@ -55,6 +55,16 @@ export const NFTList = () => {
     );
   };
 
+  const showNoNFTsMessage = () => {
+    return (
+      <div className='flex h-[20rem] items-center justify-center rounded bg-white p-6 shadow'>
+        <p className='text-center text-base font-medium text-gray-500  md:w-[60%] md:text-xl'>
+          The Connected Address Has No NFTs Minted 😒
+        </p>
+      </div>
+    );
+  };
+
   const renderNFTs = () => {
     return (
       <div className='flex flex-col flex-wrap gap-y-6  md:flex-row md:gap-4'>
@@ -73,6 +83,7 @@ export const NFTList = () => {
       {loadingNFTs && renderLoadingState()}
       {!connected && showConnectMessage()}
       {!loadingNFTs && connected && renderNFTs()}
+      {connected && !loadingNFTs && myNFTs.length === 0 && showNoNFTsMessage()}
     </div>
   );
 };
