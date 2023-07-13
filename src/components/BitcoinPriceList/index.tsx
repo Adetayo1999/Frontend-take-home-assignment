@@ -3,9 +3,10 @@ import { useCallback, useEffect, useState, useRef } from 'react';
 import { services } from '@/services';
 import { BitcoinPriceCard, BitcoinPriceCardLoading } from '../BitcoinPriceCard';
 import { CustomLoader } from '@/components/CustomLoader';
-import { useBitcoinPrice } from '@/context/bitcoin-price-context';
-
-const DEFAULT_REQUEST_INTERVAL = '5000';
+import {
+  DEFAULT_REQUEST_INTERVAL,
+  useBitcoinPrice,
+} from '@/context/bitcoin-price-context';
 
 export const BitcoinPriceList = () => {
   const intervalId = useRef<NodeJS.Timer | null>(null);
