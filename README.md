@@ -14,3 +14,7 @@ NEXT_PUBLIC_ALCHEMY_API_KEY = eTShAVkZrRUksNDcyjcb_qBoVkMdwGpi
 **Note**: These are supposed to be sensitive keys but for the purpose of the assessment I displayed them here.
 
 - Lastly start the development server with `npm run dev`
+
+## Deployed URL
+
+https://frontend-take-home-assignment-seven.vercel.app
