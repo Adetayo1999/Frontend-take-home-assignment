@@ -10,7 +10,7 @@ export const services = {
 
   async getAllMyNFTs(address: string) {
     return axios.get(
-      `https://eth-sepolia.g.alchemy.com/v2/eTShAVkZrRUksNDcyjcb_qBoVkMdwGpi/getNFTs/?owner=${address}`
+      `https://eth-sepolia.g.alchemy.com/v2/${process.env.NEXT_PUBLIC_ALCHEMY_API_KEY}/getNFTs/?owner=${address}`
     );
   },
 };
