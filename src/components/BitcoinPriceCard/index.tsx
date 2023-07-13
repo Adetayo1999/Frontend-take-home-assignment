@@ -26,7 +26,9 @@ export const BitcoinPriceCard = ({
         <h4 className='mb-1 font-semibold text-gray-800'>
           {currencyConverter(rate_float, code)}
         </h4>
-        <p className='text-sm text-gray-500'>{description}</p>
+        <p className='text-sm text-gray-500'>
+          {description} ({code})
+        </p>
       </div>
     </div>
   );

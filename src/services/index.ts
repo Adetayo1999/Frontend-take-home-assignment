@@ -7,4 +7,10 @@ export const services = {
   > {
     return axios.get('https://api.coindesk.com/v1/bpi/currentprice.json');
   },
+
+  async getAllMyNFTs(address: string) {
+    return axios.get(
+      `https://eth-sepolia.g.alchemy.com/v2/eTShAVkZrRUksNDcyjcb_qBoVkMdwGpi/getNFTs/?owner=${address}`
+    );
+  },
 };
