@@ -31,7 +31,7 @@ export const NFTCard = ({
   }, [tokenUri.gateway]);
 
   return (
-    <div className='flex h-[25rem] flex-shrink-0 flex-col gap-y-3 overflow-hidden rounded bg-white shadow md:h-[20rem] md:w-[18rem]'>
+    <div className='flex h-[25rem] w-full flex-shrink-0 flex-col gap-y-3 overflow-hidden rounded bg-white shadow md:h-[20rem] md:w-[18rem]'>
       <div className='h-[57%] w-full overflow-hidden bg-gray-200 md:h-[50%]'>
         <img
           src={imageUrl || '/no-img.png'}

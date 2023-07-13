@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { services } from '@/services';
 import { useEffect, useState } from 'react';
-import { useAccount, useConnect } from 'wagmi';
+import { useAccount } from 'wagmi';
 import { NFTCard, NFTCardLoading } from '../NFTCard';
 import { NFTItemType } from '@/types/nft';
 
@@ -14,9 +14,7 @@ export const NFTList = () => {
   const getAllMyNFTs = useCallback(async () => {
     try {
       setLoadingNFTs(true);
-      const { data } = await services.getAllMyNFTs(
-        '0x1b6E9D21B5d8148af8927495B9197Aed08578a97'
-      );
+      const { data } = await services.getAllMyNFTs(address!);
       setMyNFTS(data?.ownedNfts || []);
     } catch (error) {
       console.log(error);
