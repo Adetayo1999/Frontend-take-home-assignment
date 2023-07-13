@@ -27,7 +27,7 @@ export const NFTList = () => {
     if (address) {
       getAllMyNFTs();
     }
-  }, [address]);
+  }, [address, getAllMyNFTs]);
 
   // This hook is to prevent next.js hydration error
   useEffect(() => {

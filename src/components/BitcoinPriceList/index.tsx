@@ -40,7 +40,7 @@ export const BitcoinPriceList = () => {
     return () => {
       if (intervalId.current) clearInterval(intervalId.current);
     };
-  }, [selectedInterval]);
+  }, [selectedInterval, getBitcoinPriceData]);
 
   const renderLoadingState = () => {
     return (
