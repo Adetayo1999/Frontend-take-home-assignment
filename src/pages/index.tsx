@@ -6,7 +6,7 @@ const BitcoinPriceIndexPage = () => {
   return (
     <div className='p-10'>
       <div className='mb-6'>
-        <h1 className='text-3xl font-semibold text-gray-900'>
+        <h1 className=' text-center text-xl font-semibold text-gray-900 md:text-left md:text-3xl'>
           Bitcoin Price Index Page
         </h1>
       </div>

@@ -2,7 +2,7 @@ import {
   BitcoinPriceRefreshIntervalType,
   BitcoinPriceType,
 } from '@/types/bitcoin-price-index';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, useRef } from 'react';
 import { services } from '@/services';
 import { BitcoinPriceCard, BitcoinPriceCardLoading } from '../BitcoinPriceCard';
 import { CustomDropdown } from '@/components/CustomDropDown';
@@ -24,6 +24,7 @@ const INTERVAL_OPTIONS = [
 ];
 
 export const BitcoinPriceList = () => {
+  const intervalId = useRef<NodeJS.Timer | null>(null);
   const [data, setData] = useState<BitcoinPriceType[]>([]);
   const [loadingBitcoinPrice, setLoadingBitcoinPrice] = useState(true);
   const [hiddenCurrencies, setHiddenCurrencies] = useState<string[]>([]);
@@ -40,6 +41,7 @@ export const BitcoinPriceList = () => {
       const formattedResponseData = Object.values(requestData?.bpi) || [];
       setData(formattedResponseData);
     } catch (error) {
+      if (intervalId.current) clearInterval(intervalId.current);
     } finally {
       setLoadingBitcoinPrice(false);
     }
@@ -50,13 +52,13 @@ export const BitcoinPriceList = () => {
   }, [getBitcoinPriceData]);
 
   useEffect(() => {
-    const interval = setInterval(
+    intervalId.current = setInterval(
       getBitcoinPriceData,
       Number(selectedInterval?.value || DEFAULT_REQUEST_INTERVAL)
     );
 
     return () => {
-      clearInterval(interval);
+      if (intervalId.current) clearInterval(intervalId.current);
     };
   }, [selectedInterval]);
 
@@ -91,7 +93,7 @@ export const BitcoinPriceList = () => {
 
   const renderLoadingState = () => {
     return (
-      <div className='flex flex-wrap gap-6'>
+      <div className='mb-8 flex flex-col flex-wrap items-center gap-y-6 md:flex-row md:gap-x-10 md:gap-y-3'>
         {new Array(6).fill('loading').map((_, idx) => (
           <BitcoinPriceCardLoading key={idx} />
         ))}
@@ -114,7 +116,7 @@ export const BitcoinPriceList = () => {
 
   return (
     <div className=''>
-      <div className='mb-8 flex items-center gap-x-10'>
+      <div className='mb-8 flex flex-col  items-center gap-y-6 md:flex-row md:gap-x-10 md:gap-y-0 '>
         <div className=''>
           <p className='mb-1 text-sm font-medium'>Request Refresh Interval</p>
           <CustomDropdown
@@ -127,7 +129,9 @@ export const BitcoinPriceList = () => {
         <div className='flex items-center gap-x-8'>
           {data.map((item) => (
             <div className='flex  gap-x-2' key={item.code}>
-              <p className='text-sm font-medium'>Toggle {item.code}</p>
+              <p className='text-sm font-medium'>
+                <span className='hidden md:inline'>Toggle</span> {item.code}
+              </p>
               <CustomToggle
                 checked={isCurrencyChecked(item.code)}
                 onChange={() => handleCurrencyToggle(item.code)}

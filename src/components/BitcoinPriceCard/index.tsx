@@ -17,7 +17,7 @@ export const BitcoinPriceCard = ({
     <div
       className={`${
         isHidden ? 'hidden' : 'flex'
-      } h-[8rem] w-[18.75rem] flex-shrink-0 cursor-pointer items-center gap-x-4 rounded-md bg-white px-5 py-2 shadow transition duration-500 hover:-translate-y-2 `}
+      } h-[8rem] w-full flex-shrink-0 cursor-pointer items-center gap-x-4 rounded-md bg-white px-5 py-2 shadow transition duration-500 hover:-translate-y-2 md:w-[18.75rem] `}
     >
       <div className=''>
         <SiBitcoinsv className='text-6xl text-[#F7931A]' />
@@ -36,7 +36,7 @@ export const BitcoinPriceCard = ({
 
 export const BitcoinPriceCardLoading = () => {
   return (
-    <div className='flex h-[8rem] w-[18.75rem] flex-shrink-0 cursor-pointer items-center gap-x-4 rounded-md bg-white px-5 py-2 shadow'>
+    <div className='flex h-[8rem] w-full flex-shrink-0 cursor-pointer items-center gap-x-4 rounded-md bg-white px-5 py-2 shadow md:w-[18.75rem]'>
       <div className='h-[3.75rem] w-[3.75rem] animate-pulse rounded-full bg-gray-200' />
       <div className='w-[60%]'>
         <div className='mb-2 h-3  w-[50%] animate-pulse bg-gray-200' />
