@@ -44,7 +44,7 @@ export const BitcoinPriceList = () => {
 
   const renderLoadingState = () => {
     return (
-      <div className='mb-8 flex flex-col flex-wrap items-center gap-y-6 md:flex-row md:gap-x-10 md:gap-y-3'>
+      <div className='mb-8 flex flex-col flex-wrap items-center gap-y-6 p-10 md:flex-row md:gap-x-10 md:gap-y-3'>
         {new Array(6).fill('loading').map((_, idx) => (
           <BitcoinPriceCardLoading key={idx} />
         ))}
